@@ -1,0 +1,29 @@
+{
+  "name": "bjj-bears-sistema",
+  "version": "1.0.0",
+  "description": "Sistema BJJ Bears",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "author": "Julio Oliveira",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.0"
+  },
+  "build": {
+    "appId": "com.bjjbears.sistema",
+    "productName": "BJJ Bears System",
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "BJJ Bears System"
+    }
+  }
+}

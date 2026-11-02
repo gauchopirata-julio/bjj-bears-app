@@ -1,0 +1,31 @@
+name: Gerar Executavel Windows (.exe)
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Configurar Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Instalar Dependencias
+      run: npm install
+
+    - name: Compilar Executavel Electron
+      run: npx electron-builder --win nsis
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Guardar Ficheiro Executavel
+      uses: actions/upload-artifact@v3
+      with:
+        name: BJJ-Bears-Windows-Exe
+        path: dist/*.exe
